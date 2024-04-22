@@ -5,7 +5,7 @@ let inputTouched = {
     email: false,
     password: false,
     confirmPassword: false
-}
+};
 
 const inputFirstName = document.getElementById("inputFirstName");
 const inputLastName = document.getElementById("inputLastName");
@@ -67,27 +67,40 @@ const inputOnBlur = (ev) =>{
         default:
             break;
     }
-}
+};
 
 const inputOnFocus = (ev) =>{
     inputTouched[ev.name] = true;
-}
+};
 
 const validateEmail = email => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-}
+};
 
 const validatePhone = email => {
     const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
     return re.test(String(email).toLowerCase());
-}
+};
 
-const createAccount = (event) => { // Ajoutez 'event' en paramètre de la fonction
+const populateFormFromLocalStorage = () => {
+    const formDataString = localStorage.getItem('formData');
+    if (formDataString) {
+        const formData = JSON.parse(formDataString);
+        inputFirstName.value = formData.firstName;
+        inputLastName.value = formData.lastName;
+        inputAddress.value = formData.address;
+        inputEmail.value = formData.email;
+        inputPassword.value = formData.password;
+    }
+};
+
+// Appelle cette fonction dès que la page est chargée
+window.onload = populateFormFromLocalStorage;
+
+const createAccount = (event) => {
     event.preventDefault(); // Empêcher le comportement par défaut du formulaire
-    
-    const maConst = '8c4b867188ee47a1d4e40854b27391ec';
-    const api = 'https://api.themoviedb.org/3/movie/11?api_key=' + maConst;
+
     let errorMessage = ""; // Initialiser un message d'erreur vide
     let hasEmptyField = false; // Initialiser un indicateur pour détecter les champs vides
     
@@ -138,27 +151,10 @@ const createAccount = (event) => { // Ajoutez 'event' en paramètre de la foncti
             password: inputPassword.value
         };
 
-        // Effectuer une requête POST à l'API pour créer un compte
-        fetch(api, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erreur lors de la requête');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Réponse de l\'API:', data);
-            // Ici vous pouvez traiter la réponse de l'API, par exemple : afficher un message de succès à l'utilisateur
-        })
-        .catch(error => {
-            console.error('Erreur:', error);
-            // Ici vous pouvez gérer les erreurs lors de la requête, par exemple : afficher un message d'erreur à l'utilisateur
-        });
+        // Stocker les données dans le localStorage
+        localStorage.setItem('formData', JSON.stringify(formData));
+
+        // Rediriger l'utilisateur vers une autre page par exemple
+        window.location.href = "Acceuil.html";
     }
 };
