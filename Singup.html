@@ -17,7 +17,7 @@
             </a>
         </div>
         <div class="login-div">
-            <form class="login">
+            <form class="login" id="signupForm">
                 <h1>Inscription</h1>
                 <div class="input-text">
                     <input type="text" id="inputFirstName" name="firstName" placeholder="Prénom" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
@@ -61,14 +61,21 @@
                     </div>
                 </div>
                 
+                <div class="terms-agreement">
+                    <input type="checkbox" id="termsAgreement">
+                    <label class="color_text" for="termsAgreement">Je suis d'accord avec les conditions d'utilisation</label>
+                </div>
+
+                <div class="terms-agreement-container">
+                    <div id="termsAgreementError" class="error-message" style="display: none;">
+                        Veuillez accepter les conditions d'utilisation.
+                    </div>
+                </div>
+                
                 <div>
                     <button class="signin-button" onclick="createAccount(event)">S'inscrire</button>
                 </div>
                 <div class="remember-flex">
-                    <div>
-                        <input type="checkbox">
-                        <label class="color_text">Je suis d'accord avec les conditions d'utilisation</label>
-                    </div>
                     <div class="help">
                         <a class="color_text" href="#">Besoin d'aide ?</a>
                     </div>

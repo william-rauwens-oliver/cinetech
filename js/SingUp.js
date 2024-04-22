@@ -19,46 +19,47 @@ const warningAddress = document.getElementById("warningAddress");
 const warningEmail = document.getElementById("warningEmail");
 const warningPassword = document.getElementById("warningPassword");
 const warningConfirmPassword = document.getElementById("warningConfirmPassword");
+const termsAgreementError = document.getElementById("termsAgreementError");
 
-const inputOnBlur = (ev) =>{
-    switch(ev.name) {
+const inputOnBlur = (ev) => {
+    switch (ev.name) {
         case "firstName":
-            if(!inputTouched.firstName || inputFirstName.value.trim() === "") {
+            if (!inputTouched.firstName || inputFirstName.value.trim() === "") {
                 warningFirstName.style.display = "block";
             } else {
                 warningFirstName.style.display = "none";
             }
             break;
         case "lastName":
-            if(!inputTouched.lastName || inputLastName.value.trim() === "") {
+            if (!inputTouched.lastName || inputLastName.value.trim() === "") {
                 warningLastName.style.display = "block";
             } else {
                 warningLastName.style.display = "none";
             }
             break;
         case "address":
-            if(!inputTouched.address || inputAddress.value.trim() === "") {
+            if (!inputTouched.address || inputAddress.value.trim() === "") {
                 warningAddress.style.display = "block";
             } else {
                 warningAddress.style.display = "none";
             }
             break;
         case "email":
-            if(!inputTouched.email || !(validateEmail(inputEmail.value) || validatePhone(inputEmail.value))) {
+            if (!inputTouched.email || !(validateEmail(inputEmail.value) || validatePhone(inputEmail.value))) {
                 warningEmail.style.display = "block";
             } else {
                 warningEmail.style.display = "none";
             }
             break;
         case "password":
-            if(!inputTouched.password || !(inputPassword.value.length >= 8 && inputPassword.value.length <= 16)) {
+            if (!inputTouched.password || !(inputPassword.value.length >= 8 && inputPassword.value.length <= 16)) {
                 warningPassword.style.display = "block";
             } else {
                 warningPassword.style.display = "none";
             }
             break;
         case "confirmPassword":
-            if(!inputTouched.confirmPassword || inputConfirmPassword.value.trim() === "") {
+            if (!inputTouched.confirmPassword || inputConfirmPassword.value.trim() === "") {
                 warningConfirmPassword.style.display = "block";
             } else {
                 warningConfirmPassword.style.display = "none";
@@ -69,7 +70,7 @@ const inputOnBlur = (ev) =>{
     }
 };
 
-const inputOnFocus = (ev) =>{
+const inputOnFocus = (ev) => {
     inputTouched[ev.name] = true;
 };
 
@@ -136,8 +137,18 @@ const createAccount = (event) => {
         hasEmptyField = true;
     }
 
-    // Si au moins un champ est vide, afficher tous les messages d'erreur
-    if (hasEmptyField) {
+    // Vérifier si la case des conditions d'utilisation est cochée
+    const termsAgreement = document.getElementById("termsAgreement");
+    if (!termsAgreement.checked) {
+        errorMessage += "Veuillez accepter les conditions d'utilisation.\n";
+        termsAgreementError.style.display = "block";
+        termsAgreementError.style.color = "#e87c03"; // Définir la couleur du texte en #e87c03
+    } else {
+        termsAgreementError.style.display = "none";
+    }
+
+    // Si au moins un champ est vide ou les conditions d'utilisation ne sont pas acceptées, afficher tous les messages d'erreur
+    if (hasEmptyField || !termsAgreement.checked) {
         console.error("Erreur de création de compte:", errorMessage);
         // Ici vous pouvez ajouter du code pour afficher le message d'erreur à l'utilisateur, par exemple :
         // alert(errorMessage);
