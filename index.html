@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<title>Accueil style Netflix</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+<div class="navbar">Mon Netflix</div>
+
+<div class="featured">
+  <img id="featuredImg" src="" alt="Film à la une">
+  <div class="featured-content">
+    <h1 id="featuredTitle"></h1>
+    <p id="featuredInfo"></p>
+    <button onclick="watchMovie()">Voir le film</button>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Populaires</h2>
+  <div class="carousel" id="combinedCarousel">
+   
+  </div>
+</div>
+
+<script src="fetch.js"></script>
 </body>
 </html>
