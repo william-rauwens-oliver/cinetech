@@ -96,16 +96,14 @@ const populateFormFromLocalStorage = () => {
     }
 };
 
-// Appelle cette fonction dès que la page est chargée
 window.onload = populateFormFromLocalStorage;
 
 const createAccount = (event) => {
-    event.preventDefault(); // Empêcher le comportement par défaut du formulaire
+    event.preventDefault();
 
-    let errorMessage = ""; // Initialiser un message d'erreur vide
-    let hasEmptyField = false; // Initialiser un indicateur pour détecter les champs vides
+    let errorMessage = "";
+    let hasEmptyField = false;
     
-    // Vérifier les champs obligatoires
     if (!inputTouched.firstName || inputFirstName.value.trim() === "") {
         errorMessage += "Veuillez entrer votre prénom.\n";
         warningFirstName.style.display = "block";
@@ -137,23 +135,18 @@ const createAccount = (event) => {
         hasEmptyField = true;
     }
 
-    // Vérifier si la case des conditions d'utilisation est cochée
     const termsAgreement = document.getElementById("termsAgreement");
     if (!termsAgreement.checked) {
         errorMessage += "Veuillez accepter les conditions d'utilisation.\n";
         termsAgreementError.style.display = "block";
-        termsAgreementError.style.color = "#e87c03"; // Définir la couleur du texte en #e87c03
+        termsAgreementError.style.color = "#e87c03";
     } else {
         termsAgreementError.style.display = "none";
     }
 
-    // Si au moins un champ est vide ou les conditions d'utilisation ne sont pas acceptées, afficher tous les messages d'erreur
     if (hasEmptyField || !termsAgreement.checked) {
         console.error("Erreur de création de compte:", errorMessage);
-        // Ici vous pouvez ajouter du code pour afficher le message d'erreur à l'utilisateur, par exemple :
-        // alert(errorMessage);
     } else {
-        // Construire l'objet avec les données du formulaire
         const formData = {
             firstName: inputFirstName.value.trim(),
             lastName: inputLastName.value.trim(),
@@ -162,10 +155,8 @@ const createAccount = (event) => {
             password: inputPassword.value
         };
 
-        // Stocker les données dans le localStorage
         localStorage.setItem('formData', JSON.stringify(formData));
 
-        // Rediriger l'utilisateur vers une autre page par exemple
         window.location.href = "Acceuil.html";
     }
 };
