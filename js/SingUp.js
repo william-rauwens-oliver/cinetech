@@ -98,6 +98,16 @@ const populateFormFromLocalStorage = () => {
 
 window.onload = populateFormFromLocalStorage;
 
+// Fonction pour vérifier si un e-mail existe déjà
+const checkExistingEmail = (email) => {
+    const formDataString = localStorage.getItem('formData');
+    if (formDataString) {
+        const formData = JSON.parse(formDataString);
+        return formData.email === email;
+    }
+    return false;
+};
+
 const createAccount = (event) => {
     event.preventDefault();
 
@@ -121,6 +131,10 @@ const createAccount = (event) => {
     }
     if (!inputTouched.email || !validateEmail(inputEmail.value)) {
         errorMessage += "Veuillez saisir une adresse e-mail valide.\n";
+        warningEmail.style.display = "block";
+        hasEmptyField = true;
+    } else if (checkExistingEmail(inputEmail.value.trim())) {
+        errorMessage += "Cette adresse e-mail est déjà associée à un compte existant.\n";
         warningEmail.style.display = "block";
         hasEmptyField = true;
     }
