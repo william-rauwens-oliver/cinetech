@@ -13,43 +13,71 @@
     <div class="upper">
         <div class="logo">
             <a href="#">
-                <img src="img/Netflix-Logo.png" class="img-logo"/>
+                <img src="img/Netflix-Logo.png" class="img-logo" alt="Netflix Logo">
             </a>
         </div>
         <div class="login-div">
             <form class="login">
-                <h1>Connexion</h1>
+                <h1>Inscription</h1>
                 <div class="input-text">
-                    <input type="text" id="inputEmail" name="email" placeholder="Adresse e-mail ou numéro de téléphone" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <input type="text" id="inputFirstName" name="firstName" placeholder="Prénom" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningFirstName">
+                        Veuillez entrer votre prénom.
+                    </div>
+                </div>
+
+                <div class="input-text">
+                    <input type="text" id="inputLastName" name="lastName" placeholder="Nom" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningLastName">
+                        Veuillez entrer votre nom.
+                    </div>
+                </div>
+
+                <div class="input-text">
+                    <input type="text" id="inputAddress" name="address" placeholder="Adresse postale" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningAddress">
+                        Veuillez entrer votre adresse postale.
+                    </div>
+                </div>
+                
+                <div class="input-text">
+                    <input type="text" id="inputEmail" name="email" placeholder="Adresse e-mail" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
                     <div class="warning-input" id="warningEmail">
-                        Veuillez saisir une adresse e-mail ou un numéro de téléphone valide.
+                        Veuillez saisir une adresse e-mail valide.
                     </div>
                 </div>
                 
                 <div class="input-text">
                     <input type="password" id="inputPassword" name="password" placeholder="Mot de passe" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
                     <div class="warning-input" id="warningPassword">
-                        Votre mot de passe doit contenir entre 4 et 60 caractères.
+                        Le mot de passe doit contenir entre 8 et 16 caractères.
+                    </div>
+                </div>
+
+                <div class="input-text">
+                    <input type="password" id="inputConfirmPassword" name="confirmPassword" placeholder="Confirmer le mot de passe" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningConfirmPassword">
+                        Veuillez confirmer votre mot de passe.
                     </div>
                 </div>
                 
                 <div>
-                    <button class="signin-button" onclick="createAccount()">Connexion</button>
+                    <button class="signin-button" onclick="createAccount()">S'inscrire</button>
                 </div>
                 <div class="remember-flex">
                     <div>
                         <input type="checkbox">
-                        <label class="color_text">Se souvenir de moi</label>
+                        <label class="color_text">Je suis d'accord avec les conditions d'utilisation</label>
                     </div>
                     <div class="help">
                         <a class="color_text" href="#">Besoin d'aide ?</a>
                     </div>
                 </div>
                 <div class="login-face">
-                    <img src="img/AppleLogo.png" height="20"/><a href="#" class="color_link log_face">Se connecter avec Apple</a>
+                    <img src="img/AppleLogo.png" height="20" alt="Apple Logo"><a href="#" class="color_link log_face">Se connecter avec Apple</a>
                 </div>
                 <div class="new-members">
-                    Nouveau sur Netflix ? <a href="#" class="signup-link">Inscrivez-vous maintenant</a>.
+                    Déjà membre de Netflix ? <a href="SingIn.html" class="signup-link">Connectez-vous</a>.
                 </div>
             </form>
         </div>
@@ -93,6 +121,6 @@
             </div>
         </div>
     </div>
-    <script src="js/Script.js"></script>
+    <script src="js/SingUp.js"></script>
 </body>
 </html>

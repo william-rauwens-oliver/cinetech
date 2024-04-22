@@ -45,8 +45,33 @@ const validatePhone = email => {
     return re.test(String(email).toLowerCase());
 }
 
-const createAccount = () => {
-    const apiKey = "8c4b867188ee47a1d4e40854b27391ec";
-    // Faire quelque chose avec la clé API, comme envoyer les données du formulaire à un serveur
-    console.log("Création de compte avec la clé API:", apiKey);
+const signIn = () => {
+    let errorMessage = ""; // Initialiser un message d'erreur vide
+    let hasEmptyField = false; // Initialiser un indicateur pour détecter les champs vides
+    
+    // Vérifier si les champs email et mot de passe sont vides
+    if (!inputTouched.email || inputEmail.value.trim() === "") {
+        errorMessage += "Veuillez saisir votre adresse e-mail.\n";
+        warningEmail.style.display = "block";
+        hasEmptyField = true;
+    }
+    if (!inputTouched.password || inputPassword.value.trim() === "") {
+        errorMessage += "Veuillez saisir votre mot de passe.\n";
+        warningPassword.style.display = "block";
+        hasEmptyField = true;
+    }
+
+    // Si au moins un champ est vide, afficher tous les messages d'erreur
+    if (hasEmptyField) {
+        console.error("Erreur de connexion:", errorMessage);
+        // Ici vous pouvez ajouter du code pour afficher le message d'erreur à l'utilisateur, par exemple :
+        // alert(errorMessage);
+    } else {
+        // Sinon, procéder à la connexion
+        // Ajoutez votre logique de connexion ici
+        console.log("Tentative de connexion avec l'email:", inputEmail.value);
+    }
 }
+
+// Ajouter un gestionnaire d'événements pour le clic sur le bouton "Se connecter"
+document.querySelector('.signin-button').addEventListener('click', signIn);
