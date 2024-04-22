@@ -83,51 +83,69 @@ const validatePhone = email => {
     return re.test(String(email).toLowerCase());
 }
 
-const createAccount = () => {
-    const apiKey = "8c4b867188ee47a1d4e40854b27391ec";
-    let errorMessage = ""; // Initialiser un message d'erreur vide
-    let hasEmptyField = false; // Initialiser un indicateur pour détecter les champs vides
-    
-    // Vérifier les champs obligatoires
+const createAccount = (event) => {
+    event.preventDefault(); 
+
+    let errorMessage = "";
+    let hasEmptyField = false;
+
     if (!inputTouched.firstName || inputFirstName.value.trim() === "") {
         errorMessage += "Veuillez entrer votre prénom.\n";
         warningFirstName.style.display = "block";
         hasEmptyField = true;
+    } else {
+        warningFirstName.style.display = "none";
     }
     if (!inputTouched.lastName || inputLastName.value.trim() === "") {
         errorMessage += "Veuillez entrer votre nom.\n";
         warningLastName.style.display = "block";
         hasEmptyField = true;
+    } else {
+        warningLastName.style.display = "none";
     }
     if (!inputTouched.address || inputAddress.value.trim() === "") {
         errorMessage += "Veuillez entrer votre adresse postale.\n";
         warningAddress.style.display = "block";
         hasEmptyField = true;
+    } else {
+        warningAddress.style.display = "none";
     }
-    if (!inputTouched.email || !validateEmail(inputEmail.value)) {
+    if (!inputTouched.email || !(validateEmail(inputEmail.value) || validatePhone(inputEmail.value))) {
         errorMessage += "Veuillez saisir une adresse e-mail valide.\n";
         warningEmail.style.display = "block";
         hasEmptyField = true;
+    } else {
+        warningEmail.style.display = "none";
     }
     if (!inputTouched.password || !(inputPassword.value.length >= 8 && inputPassword.value.length <= 16)) {
         errorMessage += "Le mot de passe doit contenir entre 8 et 16 caractères.\n";
         warningPassword.style.display = "block";
         hasEmptyField = true;
+    } else {
+        warningPassword.style.display = "none";
     }
     if (!inputTouched.confirmPassword || inputConfirmPassword.value.trim() === "") {
         errorMessage += "Veuillez confirmer votre mot de passe.\n";
         warningConfirmPassword.style.display = "block";
         hasEmptyField = true;
+    } else {
+        warningConfirmPassword.style.display = "none";
     }
 
-    // Si au moins un champ est vide, afficher tous les messages d'erreur
     if (hasEmptyField) {
         console.error("Erreur de création de compte:", errorMessage);
-        // Ici vous pouvez ajouter du code pour afficher le message d'erreur à l'utilisateur, par exemple :
-        // alert(errorMessage);
+        // Ici vous pouvez ajouter du code pour afficher le message d'erreur à l'utilisateur
     } else {
-        // Sinon, procéder à la création du compte
-        console.log("Création de compte avec la clé API:", apiKey);
-        // Ici vous pouvez ajouter du code pour soumettre les données du formulaire à un serveur, etc.
+        const formData = {
+            firstName: inputFirstName.value.trim(),
+            lastName: inputLastName.value.trim(),
+            address: inputAddress.value.trim(),
+            email: inputEmail.value.trim(),
+            password: inputPassword.value
+        };
+
+        localStorage.setItem('formData', JSON.stringify(formData));
+        console.log('Données enregistrées localement:', formData);
+        // Ici vous pouvez ajouter du code pour indiquer à l'utilisateur que le compte a été créé localement
     }
-}
+};
