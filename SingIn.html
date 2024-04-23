@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/logo.png">
+    <title>Cinetech</title>
+</head>
+<body>
+    <div class="upper">
+        <div class="logo">
+            <a href="NetflixDoc.html">
+                <img src="img/Netflix-Logo.png" class="img-logo"/>
+            </a>
+        </div>
+        <div class="login-div">
+            <form class="login">
+                <h1>Connexion</h1>
+                <div class="input-text">
+                    <input type="text" id="inputEmail" name="email" placeholder="Adresse e-mail ou numéro de téléphone" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningEmail">
+                        Veuillez saisir une adresse e-mail ou un numéro de téléphone valide.
+                    </div>
+                </div>
+                
+                <div class="input-text">
+                    <input type="password" id="inputPassword" name="password" placeholder="Mot de passe" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningPassword">
+                        Votre mot de passe doit contenir entre 4 et 60 caractères.
+                    </div>
+                </div>
+                <div id="error-message" class="error-message"></div>
+                
+                <div>
+                    <button class="signin-button" onclick="createAccount()">Connexion</button>
+                </div>
+                <div class="remember-flex">
+                    <div>
+                        <input type="checkbox">
+                        <label class="color_text">Se souvenir de moi</label>
+                    </div>
+                    <div class="help">
+                        <a class="color_text" href="#">Besoin d'aide ?</a>
+                    </div>
+                </div>
+                <div class="login-face">
+                    <img src="img/AppleLogo.png" height="20"/><a href="#" class="color_link log_face">Se connecter avec Apple</a>
+                </div>
+                <div class="new-members">
+                    Nouveau sur Netflix ? <a href="Singup.html" class="signup-link">Inscrivez-vous maintenant</a>.
+                </div>
+            </form>
+            <div id="no-account-message" class="no-account-message"></div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom-width">
+            Des questions ? Appelez le <a href="tel:1-844-542-4813" class="tel-link">0805 543 063</a>
+            <div>
+                <ul class="bottom-flex">
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            FAQ
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            Centre d'aide
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            Conditions d'utilisation
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            Confidentialité
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            Préférences en matière de cookies
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            Informations sur l'entreprise
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/SingIn.js"></script>
+</body>
+</html>

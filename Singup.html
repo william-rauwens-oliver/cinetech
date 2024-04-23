@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/logo.png">
+    <title>Cinetech</title>
+</head>
+<body>
+    <div class="upper">
+        <div class="logo">
+            <a href="NetflixDoc.html">
+                <img src="img/Netflix-Logo.png" class="img-logo" alt="Netflix Logo">
+            </a>
+        </div>
+        <div class="login-div">
+            <form class="login" id="signupForm">
+                <h1>Inscription</h1>
+                <div class="input-text">
+                    <input type="text" id="inputFirstName" name="firstName" placeholder="Prénom" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningFirstName">
+                        Veuillez entrer votre prénom.
+                    </div>
+                </div>
+
+                <div class="input-text">
+                    <input type="text" id="inputLastName" name="lastName" placeholder="Nom" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningLastName">
+                        Veuillez entrer votre nom.
+                    </div>
+                </div>
+
+                <div class="input-text">
+                    <input type="text" id="inputAddress" name="address" placeholder="Adresse postale" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningAddress">
+                        Veuillez entrer votre adresse postale.
+                    </div>
+                </div>
+                
+                <div class="input-text">
+                    <input type="text" id="inputEmail" name="email" placeholder="Adresse e-mail" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningEmail">
+                        Veuillez saisir une adresse e-mail valide.
+                    </div>
+                </div>
+                
+                <div class="input-text">
+                    <input type="password" id="inputPassword" name="password" placeholder="Mot de passe" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningPassword">
+                        Le mot de passe doit contenir entre 8 et 16 caractères.
+                    </div>
+                </div>
+
+                <div class="input-text">
+                    <input type="password" id="inputConfirmPassword" name="confirmPassword" placeholder="Confirmer le mot de passe" onfocus="inputOnFocus(this)" onblur="inputOnBlur(this)"/>
+                    <div class="warning-input" id="warningConfirmPassword">
+                        Veuillez confirmer votre mot de passe.
+                    </div>
+                </div>
+                
+                <div class="terms-agreement">
+                    <input type="checkbox" id="termsAgreement">
+                    <label class="color_text" for="termsAgreement">Je suis d'accord avec les conditions d'utilisation</label>
+                </div>
+
+                <div class="terms-agreement-container">
+                    <div id="termsAgreementError" class="error-message" style="display: none;">
+                        Veuillez accepter les conditions d'utilisation.
+                    </div>
+                </div>
+                
+                <div>
+                    <button class="signin-button" onclick="createAccount(event)">S'inscrire</button>
+                </div>
+                <div class="remember-flex">
+                    <div class="help">
+                        <a class="color_text" href="#">Besoin d'aide ?</a>
+                    </div>
+                </div>
+                <div class="login-face">
+                    <img src="img/AppleLogo.png" height="20" alt="Apple Logo"><a href="#" class="color_link log_face">Se connecter avec Apple</a>
+                </div>
+                <div class="new-members">
+                    Déjà membre de Netflix ? <a href="SingIn.html" class="signup-link">Connectez-vous</a>.
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom-width">
+            Des questions ? Appelez le <a href="tel:1-844-542-4813" class="tel-link">0805 543 063</a>
+            <div>
+                <ul class="bottom-flex">
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            FAQ
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            Centre d'aide
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            Conditions d'utilisation
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            Confidentialité
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            Préférences en matière de cookies
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            Informations sur l'entreprise
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/SingUp.js"></script>
+</body>
+</html>
