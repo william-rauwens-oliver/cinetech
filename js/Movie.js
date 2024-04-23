@@ -1,12 +1,11 @@
-const apiKey = '8c4b867188ee47a1d4e40854b27391ec';
-const api = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr-FR`;
+const maConst = '8c4b867188ee47a1d4e40854b27391ec';
+const api = 'https://api.themoviedb.org/3/discover/movie?api_key=' + maConst;
 
 fetch(api)
   .then(response => response.json())
   .then(data => {
     const filmsContainer = document.getElementById('filmsContainer');
 
-    console.log(data);
     data.results.forEach(film => {
       const filmItem = document.createElement('div');
       filmItem.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'mb-4');
