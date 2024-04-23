@@ -32,9 +32,10 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="menu-main-menu-container">
                   <ul id="top-menu" class="navbar-nav ml-auto">
-                    <li class="menu-item"><a href="#">Home</a></li>
-                    <li class="menu-item"><a href="#">Movies</a></li>
-                    <li class="menu-item"><a href="#">Shows</a></li>
+                    <li class="menu-item"><a href="#">Acceuil</a></li>
+                    <li class="menu-item"><a href="#">Films</a></li>
+                    <li class="menu-item"><a href="#">Séries</a></li>
+                    <li class="menu-item"><a href="Favoris.html">Voir les favoris</a></li>
                     <li class="menu-item">
                       <a href="#">Contact Us</a>
                       <ul class="sub-menu">
@@ -375,45 +376,11 @@
       </div>
     </div>
   </footer>
-  <script>
-    // Récupérer les films favoris depuis le stockage local
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    const filmsContainer = document.getElementById('filmsContainer');
-
-    // Si aucun film n'est en favori, afficher un message approprié
-    if (favorites.length === 0) {
-      filmsContainer.innerHTML = "<p>Aucun film en favori pour le moment.</p>";
-    } else {
-      // Parcourir les films favoris et afficher les détails de chaque film
-      favorites.forEach(movieId => {
-        // Récupérer les détails du film depuis l'API de TMDb
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=8c4b867188ee47a1d4e40854b27391ec`)
-          .then(response => response.json())
-          .then(movie => {
-            // Afficher les détails du film sur la page
-            filmsContainer.innerHTML += `
-              <div class="col-lg-3 col-md-6">
-                <div class="film-item">
-                  <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}" class="img-fluid">
-                  <h3 class="film-title">${movie.title}</h3>
-                  <p class="film-description">${movie.overview}</p>
-                </div>
-              </div>
-            `;
-          })
-          .catch(error => console.error('Erreur lors de la récupération des détails du film:', error));
-      });
-    }
-  </script>
 
   <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/parallax.min.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.counterup.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
   <script src="js/wow.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/Favoris.js"></script>
+  
 </body>
-
 </html>
