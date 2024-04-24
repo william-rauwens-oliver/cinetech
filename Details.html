@@ -298,42 +298,41 @@
       </header>
 
       <div class="main-content">
-        <div class="main-content">
-          <div class="container">
-              <div>
-                  <p>Titre du film :</p>
-                  <h1 id="filmTitle"></h1>
-              </div>
-              <div>
-                  <p>Affiche du film :</p>
-                  <div id="filmPoster"></div>
-              </div>
-              <div>
-                  <p>Description du film :</p>
-                  <p id="filmDescription"></p>
-              </div>
-              <div>
-                  <p>Réalisateur :</p>
-                  <div id="director"></div>
-              </div>
-              <div>
-                  <p>Genres :</p>
-                  <div id="genres"></div>
-              </div>
-              <div>
-                  <p>Pays d'origine :</p>
-                  <div id="originCountry"></div>
-              </div>
-              <div>
-                  <p>Résumé :</p>
-                  <div id="summary"></div>
-              </div>
-              <div>
-                  <p>Acteurs :</p>
-                  <div id="actors"></div>
-              </div>
-          </div>
-      </div>        
+        <div class="container">
+            <div>
+                <p>Titre de la série :</p>
+                <h1 id="seriesTitle"></h1>
+            </div>
+            <div>
+                <p>Affiche de la série :</p>
+                <div id="seriesPoster"></div>
+            </div>
+            <div>
+                <p>Description de la série :</p>
+                <p id="seriesDescription"></p>
+            </div>
+            <div>
+                <p>Créateur :</p>
+                <div id="creator"></div>
+            </div>
+            <div>
+                <p>Genres :</p>
+                <div id="genres"></div>
+            </div>
+            <div>
+                <p>Pays d'origine :</p>
+                <div id="originCountry"></div>
+            </div>
+            <div>
+                <p>Résumé :</p>
+                <div id="summary"></div>
+            </div>
+            <div>
+                <p>Acteurs principaux :</p>
+                <div id="actors"></div>
+            </div>
+        </div>
+    </div>            
     
     <footer class="iq-bg-dark">
         <div class="footer-top">
@@ -401,53 +400,50 @@
       </footer>
 
       <script>
-        // Récupérer l'ID du film à partir de l'URL
+        // Récupérer l'ID de la série à partir de l'URL
         const urlParams = new URLSearchParams(window.location.search);
-        const filmId = urlParams.get('id');
+        const seriesId = urlParams.get('id');
         
-        // Charger les détails du film à partir de l'API
-        // Charger les détails du film à partir de l'API
-fetch(`https://api.themoviedb.org/3/movie/${filmId}?api_key=8c4b867188ee47a1d4e40854b27391ec&append_to_response=credits`)
-    .then(response => response.json())
-    .then(data => {
-        // Afficher les détails du film sur la page
-        document.getElementById('filmTitle').innerText = data.title;
-        document.getElementById('filmDescription').innerText = data.overview;
-
-        // Afficher l'image de l'affiche
-        const posterPath = data.poster_path;
-        if (posterPath) {
-            const posterUrl = `https://image.tmdb.org/t/p/w500/${posterPath}`;
-            const posterImg = document.createElement('img');
-            posterImg.src = posterUrl;
-            posterImg.alt = data.title + ' Poster';
-            document.getElementById('filmPoster').appendChild(posterImg);
-        }
-
-        // Afficher le réalisateur
-        const director = data.credits.crew.find(member => member.job === 'Director');
-        if (director) {
-            document.getElementById('director').innerText = director.name;
-        }
-
-        // Afficher les types de film
-        const genres = data.genres.map(genre => genre.name).join(', ');
-        document.getElementById('genres').innerText = genres;
-
-        // Afficher le pays d'origine
-        document.getElementById('originCountry').innerText = data.production_countries[0].name;
-
-        // Afficher le résumé
-        document.getElementById('summary').innerText = data.overview;
-
-        // Afficher les acteurs
-        const actors = data.credits.cast.slice(0, 5).map(actor => actor.name).join(', ');
-        document.getElementById('actors').innerText = actors;
-    })
-    .catch(error => {
-        console.error('Erreur lors de la récupération des données du film:', error);
-    });
-    </script>
+        // Charger les détails de la série à partir de l'API
+        fetch(`https://api.themoviedb.org/3/tv/${seriesId}?api_key=8c4b867188ee47a1d4e40854b27391ec`)
+            .then(response => response.json())
+            .then(data => {
+                // Afficher les détails de la série sur la page
+                document.getElementById('seriesTitle').innerText = data.name;
+                document.getElementById('seriesDescription').innerText = data.overview;
+    
+                // Afficher l'image de l'affiche
+                const posterPath = data.poster_path;
+                if (posterPath) {
+                    const posterUrl = `https://image.tmdb.org/t/p/w500/${posterPath}`;
+                    const posterImg = document.createElement('img');
+                    posterImg.src = posterUrl;
+                    posterImg.alt = data.name + ' Poster';
+                    document.getElementById('seriesPoster').appendChild(posterImg);
+                }
+    
+                // Afficher le créateur
+                const creator = data.created_by.map(creator => creator.name).join(', ');
+                document.getElementById('creator').innerText = creator;
+    
+                // Afficher les genres
+                const genres = data.genres.map(genre => genre.name).join(', ');
+                document.getElementById('genres').innerText = genres;
+    
+                // Afficher le pays d'origine
+                document.getElementById('originCountry').innerText = data.origin_country.join(', ');
+    
+                // Afficher le résumé
+                document.getElementById('summary').innerText = data.overview;
+    
+                // Afficher les acteurs principaux
+                const actors = data.credits.cast.slice(0, 5).map(actor => actor.name).join(', ');
+                document.getElementById('actors').innerText = actors;
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération des données de la série:', error);
+            });
+    </script>    
     
 </body>
 </html>

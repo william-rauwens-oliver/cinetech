@@ -1,39 +1,40 @@
+// Déclaration des constantes
 const maConst = '8c4b867188ee47a1d4e40854b27391ec';
-const apiUrl = 'https://api.themoviedb.org/3/discover/tv?api_key=' + maConst;
-const filmsContainer = document.getElementById('filmsContainer');
+const apiUrl = 'https://api.themoviedb.org/3/discover/tv?api_key=' + maConst; // Modification ici pour les séries TV
+const seriesContainer = document.getElementById('seriesContainer'); // Modifier le conteneur des séries
 
-function formatRuntime(runtime) {
-    const hours = Math.floor(runtime / 60);
-    const minutes = runtime % 60;
-    return `${hours}h ${minutes}min`;
-}
-function loadFilmDetails(filmId) {
-    fetch(`https://api.themoviedb.org/3/discover/tv/${filmId}?api_key=${maConst}`)
+// Fonction pour charger les détails de la série
+function loadSeriesDetails(seriesId) {
+    // Utiliser l'ID de la série pour récupérer les détails de la série depuis l'API
+    fetch(`https://api.themoviedb.org/3/tv/${seriesId}?api_key=${maConst}`)
         .then(response => response.json())
         .then(data => {
-           
-            console.log(data);
+            // Afficher les détails de la série sur la page
+            // Vous pouvez mettre à jour le contenu de la page avec les détails de la série ici
+            console.log(data); // Exemple de traitement des données de la série
         })
         .catch(error => {
-            console.error('Erreur lors de la récupération des données du film:', error);
+            console.error('Erreur lors de la récupération des données de la série:', error);
         });
 }
-function renderFilm(film) {
-    const filmItem = document.createElement('div');
-    filmItem.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'mb-4');
 
-    filmItem.innerHTML = `
+// Fonction pour créer et afficher un élément représentant une série
+function renderSeries(series) {
+    const seriesItem = document.createElement('div');
+    seriesItem.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'mb-4');
+
+    seriesItem.innerHTML = `
         <div class="block-images position-relative">
             <div class="img-box">
-                <img src="https://image.tmdb.org/t/p/w500${film.poster_path}" class="img-fluid" alt="${film.title}" />
+                <img src="https://image.tmdb.org/t/p/w500${series.poster_path}" class="img-fluid" alt="${series.name}" />
             </div>
             <div class="block-description">
                 <h6 class="iq-title">
-                    <a href="#">${film.title}</a>
+                    <a href="#">${series.name}</a>
                 </h6>
                 <div class="movie-time d-flex align-items-center my-2">
-                    <div class="badge badge-secondary p-1 mr-2">${film.adult ? '18+' : 'All ages'}</div>
-                    <span class="text-white">${formatRuntime(film.runtime)}</span>
+                    <div class="badge badge-secondary p-1 mr-2">${series.adult ? '18+' : 'All ages'}</div>
+                    <span class="text-white">${series.episode_run_time ? formatRuntime(series.episode_run_time[0]) : 'N/A'}</span> <!-- Utiliser le temps d'exécution de l'épisode -->
                 </div>
                 <div class="hover-buttons">
                     <span class="btn btn-hover iq-button play-now">
@@ -50,21 +51,26 @@ function renderFilm(film) {
         </div>
     `;
 
-    const playNowButton = filmItem.querySelector('.play-now');
+    // Ajouter un gestionnaire d'événements sur le bouton "Play Now"
+    const playNowButton = seriesItem.querySelector('.play-now');
     playNowButton.addEventListener('click', () => {
-        window.location.href = `Details.html?id=${film.id}`;
+        // Redirection vers la page principale avec l'ID de la série en tant que paramètre de requête
+        window.location.href = `Details.html?id=${series.id}`;
     });
 
-    filmsContainer.appendChild(filmItem);
+    // Ajouter l'élément de la série au conteneur
+    seriesContainer.appendChild(seriesItem);
 }
 
+// Charger les données des séries depuis l'API
 fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
-        data.results.forEach(film => {
-            renderFilm(film);
+        // Pour chaque série, créer et afficher un élément représentant la série
+        data.results.forEach(series => {
+            renderSeries(series);
         });
     })
     .catch(error => {
-        console.error('Erreur lors de la récupération des données des films:', error);
+        console.error('Erreur lors de la récupération des données des séries:', error);
     });
