@@ -1038,7 +1038,7 @@ a.text-primary:focus, a.text-primary:hover{
 
 /* ******************************** */
 .main-content{
-    padding-top: 300px;
+    padding-top: 100px;
 }
 
 .iq-main-header{
@@ -2338,7 +2338,7 @@ footer .footer-top .info-share li:last-child{
 
 .iq-bg-dark{
     position: relative;
-    padding-top: 490px
+    padding-top: 100px
 }
 footer .footer-top .info-share{
     padding-left: 0;
