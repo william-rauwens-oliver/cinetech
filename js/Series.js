@@ -41,6 +41,9 @@ function renderSeries(series) {
                         <i class="fa fa-play mr-1"></i>
                         Play Now
                     </span>
+                    <button class="btn btn-link favorite-btn" data-id="${series.id}">
+                        <i class="fa fa-heart"></i> Add to Favorites
+                    </button>
                 </div>
             </div>
             <div class="block-social-info">
@@ -58,8 +61,24 @@ function renderSeries(series) {
         window.location.href = `Details.html?id=${series.id}`;
     });
 
+    // Ajouter un gestionnaire d'événements sur le bouton de favoris
+    const favoriteButton = seriesItem.querySelector('.favorite-btn');
+    favoriteButton.addEventListener('click', () => {
+        // Ajoutez ici votre logique pour ajouter la série aux favoris
+        console.log('Ajouter la série avec ID ' + series.id + ' aux favoris.');
+        // Ajouter la série aux favoris localement
+        addToFavorites(series.id);
+    });
+
     // Ajouter l'élément de la série au conteneur
     seriesContainer.appendChild(seriesItem);
+}
+
+// Fonction pour ajouter une série aux favoris
+function addToFavorites(seriesId) {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    favorites.push(seriesId);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 
 // Charger les données des séries depuis l'API
