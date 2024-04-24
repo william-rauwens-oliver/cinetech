@@ -1,74 +1,187 @@
-body{
-  margin: 0px;
-  background-color: rgb(31, 31, 31);
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100vw;
-}
-   .navbar {
-    background: transparent;
-    padding: 10px 20px;
-    font-size: 24px;
-    position: absolute;
-    z-index: 99;
-
-  }
-  
-#featuredCarousel {
-  height: 100vh;
-  position: relative;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.carousel-inner {
-  height: 100%;
+body {
+  font-family: "Netflix Sans", sans-serif;
+  background-color: #111;
 }
 
-.carousel-item img {
-  height: 100vh;
-  object-fit: cover;
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: #111;
 }
 
-.carousel-caption {
-  position: absolute;
-  right: 10%;
-  bottom: 50%;
-  left: 15%;
-  z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: #fff;
-  text-align: left; /* Texte aligné à gauche */
-  text-shadow: 0 1px 2px rgba(0,0,0,.6); /* Amélioration de la lisibilité */
-  font-size: 20px;
-}
-
-/* CSS pour la liste de films populaires */
-.section .list {
-  display: flex;
-  overflow-x: auto; /* Activation du défilement horizontal */
-  overflow: hidden;
-}
-
-
-h2{
-  padding: 16px;
-}
-h5{
-  font-size: 32px
-}
-
-.swiper-slide {
+::-webkit-scrollbar-thumb {
+  background-color: white;
   border-radius: 10px;
 }
 
-.swiper-button-next, .swiper-button-prev {
-  background-color: rgba(0, 0, 0, 0.5); /* Un fond semi-transparent pour une meilleure visibilité */
-  border-radius: 50%; /* Forme circulaire */
-  width: 50px;
-  height: 50px;
-  top: 150%;
-  transform: translateY(-50%); /* Centrer verticalement les flèches */
+.nav {
+  position: fixed;
+  top: 0;
+  padding: 20px 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  transition-timing-function: ease-in;
+  transition: all 0.5s;
+}
+
+.nav.active {
+  background-color: #111;
+}
+
+.nav__left {
+  margin-left: 10px;
+}
+
+.nav_logo {
+  width: 120px;
+}
+
+.nav__right {
+  right: 20px;
+  display: flex;
+  margin-right: 10px;
+}
+
+.nav__middle {
+  display: flex;
+  gap: 10px; 
+  opacity: 0;
+
+}
+.nav__middle>a{
+  text-decoration: none;
+  color: rgb(167, 167, 167);
+}
+.nav__middle.visible{
+  opacity: 1;
+}
+
+.nav_avatar {
+  width: 35px;
+}
+
+#banner {
+  color: white;
+  object-fit: contain;
+  height: 844px;
+  background-position: center center;
+  background-size: cover;
+}
+
+#banner__contents {
+  margin-left: 70px;
+  padding-top: 540px;
+  height: 190px;
+}
+
+#banner__title {
+  font-size: 3rem;
+  font-weight: 800;
+  padding-bottom: 0.3rem;
+}
+
+#banner__description {
+  width: 45rem;
+  line-height: 1.5;
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  max-width: 360px;
+  height: 80px;
+}
+
+#banner__button {
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding-left: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  padding-top: 0.5rem;
+  background-color: rgba(51, 51, 51, 0.5);
+  padding-bottom: 0.5rem;
+}
+
+#banner__button:hover {
+  color: black;
+  background-color: #e6e6e6;
+  transition: all 0.3s;
+}
+
+#banner__fadeBottom {
+  height: 7.4rem;
+  background: linear-gradient(180deg,
+      transparent,
+      rgba(37, 37, 37, 0.61),
+      #111);
+}
+
+.row {
+  margin-left: 20px;
   color: white;
 }
-.card-title{
-  color: #d6d6d6;
+
+.row__poster {
+  object-fit: contain;
+  margin-right: 10px;
+  transition: transform 500ms;
+  cursor: pointer;
+}
+
+.row__posters::-webkit-scrollbar-thumb {
+  display: block;
+  background-color: rgb(59, 59, 59);
+}
+
+.row__posters::-webkit-scrollbar {
+  height: 0.5em;
+}
+
+.row__posters {
+  display: flex;
+  overflow-x: scroll;
+  padding: 20px;
+  gap: 12px;
+  position: relative;
+}
+
+.row__poster:hover {
+  transform: scale(1.08);
+}
+
+.row__posterLarge,
+.row__posterLarge1,
+.row__posterLarge2 {
+  object-fit: contain;
+  max-height: 300px;
+  transition: transform 500ms;
+}
+
+.row__posterLarge:hover,
+.row__posterLarge1:hover,
+.row__posterLarge2:hover {
+  transform: scale(1.09);
+  opacity: 1;
+}
+
+.scroll-right {
+  right: 0;
+}
+
+@media only screen and (max-width: 1200px) {
+  .row__posters {
+    overflow-x: scroll;
+    scrollbar-width: none;
+  }
 }

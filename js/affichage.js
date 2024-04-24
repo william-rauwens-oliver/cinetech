@@ -1,77 +1,84 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const apiKey = '8c4b867188ee47a1d4e40854b27391ec';
-    const apiFilmURL = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=fr-FR&page=1`;
-    const apiSerieURL = `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&language=fr-FR&page=2`;
+const api = "api_key=8c4b867188ee47a1d4e40854b27391ec";
+const base_url = "https://api.themoviedb.org/3";
+const final_url = base_url + "/discover/movie?sort_by=popularity.desc&" + api + "&language=fr-FR";
+const img_url = "https://image.tmdb.org/t/p/original";
 
-    function fetchCarouselData(url, containerId, maxResults) {
-        fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const container = document.getElementById(containerId);
-            data.results.slice(0, maxResults).forEach((item, index) => {
-                const element = document.createElement('div');
-                element.className = `carousel-item ${index === 0 ? 'active' : ''}`;
-                element.innerHTML = `
-                    <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class="d-block w-100" alt="${item.title}">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>${item.title}</h5>
-                        <p>Genre: ${item.genre_id}</p>
-                        <p>Note: ${item.vote_average} / 10</p>
-                    </div>
-                `;
-                container.appendChild(element);
-            });
-        })
-        .catch(error => {
-            console.error('Erreur lors de la récupération des données:', error);
-        });
-    }
-    
-    
-    function fetchData(url, containerId, maxResults, isSeries = false) {
-        fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const swiperWrapper = document.querySelector(`#${containerId} .swiper-wrapper`);
-            data.results.slice(0, maxResults).forEach((item, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'swiper-slide';
-                slide.innerHTML = `
-                    <img src="https://image.tmdb.org/t/p/w300${item.poster_path}" alt="${item.title || item.name}">
-                    <div class="card-body">
-                        <h5 class="card-title">${item.title || item.name}</h5>
-                    </div>
-                `;
-                swiperWrapper.appendChild(slide);
-            });
-    
-            // Initialize Swiper after the slides are added
-            const swiper = new Swiper('.swiper-container', {
-              slidesPerView: 3,
-              spaceBetween: 10,
-              navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-              },
-              breakpoints: {
-                600: {
-                  slidesPerView: 2,
-                },
-                900: {
-                  slidesPerView: 2,
-                },
-                1200: {
-                  slidesPerView: 4,
-                },
-              }
-            });
-        })
-        .catch(error => {
-            console.error('Erreur lors de la récupération des données:', error);
-        });
-    }
-    fetchCarouselData(apiFilmURL, 'carouselItems', 3);
+const requests = {
+  fetchPopular: `${base_url}/discover/movie?certification_country=FR&certification.lte=G&sort_by=popularity.desc&${api}&language=fr-FR`,
+  fetchTrending: `${base_url}/trending/all/week?${api}&language=fr-FR`,
+  fetchNetflixOrignals: `${base_url}/discover/tv?${api}&with_networks=213&language=fr-FR`,
+};
 
-    fetchData(apiFilmURL, 'liste', 10);
-    fetchData(apiSerieURL, 'liste', 10);
+
+function truncate(str, n) {
+  return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+}
+
+fetch(requests.fetchNetflixOrignals)
+.then((res) => res.json())
+.then((data) => {
+  console.log(data.results);
+ 
+  const setMovie = data.results[Math.floor(Math.random() * data.results.length - 1)];
+  console.log(setMovie);
+  var banner = document.getElementById("banner");
+  var banner_title = document.getElementById("banner__title");
+  var banner__desc = document.getElementById("banner__description");
+  var banner__rate = document.getElementById("banner__rate")
+  banner.style.backgroundImage = "url(" + img_url + setMovie.backdrop_path + ")";
+  banner__desc.innerText = truncate(setMovie.overview, 150);
+  banner_title.innerText = setMovie.name;
+  banner__rate.innerText = setMovie.vote_average;
+})
+
+fetch(requests.fetchPopular)
+.then((res) => res.json())
+.then((data) => {
+  const headrow = document.getElementById("headrow");
+  const row = document.createElement("div");
+  row.className = "row";
+  row.classList.add("popularrow");
+  headrow.appendChild(row);
+  const title = document.createElement("h2");
+  title.className = "row__title";
+  title.innerText = "Populaire";
+  row.appendChild(title);
+  const row_posters = document.createElement("div");
+  row_posters.className = "row__posters";
+  row.appendChild(row_posters);
+  data.results.forEach(movie => {
+    const poster = document.createElement("img");
+    poster.className = "row__posterLarge";
+    var s2 = movie.id;
+    poster.id = s2;
+    poster.src = img_url + movie.poster_path;
+    row_posters.appendChild(poster);
+
+  });
+});
+
+fetch(requests.fetchTrending)
+.then((res) => res.json())
+.then((data) => {
+  const headrow = document.getElementById("headrow");
+  const row = document.createElement("div");
+  row.className = "row";
+  headrow.appendChild(row);
+  const title = document.createElement("h2");
+  title.className = "row__title";
+  title.innerText = "Les mieux notés";
+  row.appendChild(title);
+  const row_posters = document.createElement("div");
+  row_posters.className = "row__posters";
+  row.appendChild(row_posters);
+  data.results.forEach(movie => {
+    console.log(movie);
+    const poster = document.createElement("img");
+    poster.className = "row__posterLarge";
+    var s2 = movie.id;
+    poster.id = s2;
+    poster.src = img_url + movie.poster_path;
+    row_posters.appendChild(poster);
+
+  });
 });
