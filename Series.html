@@ -185,19 +185,19 @@
               <div class="navbar-right menu-right">
                 <ul class="d-flex align-items-center list-inline m-0">
                   <li class="nav-item nav-icon">
-                    <a href="#" class="search-toggle device-search">
+                    <a href="#" id="searchToggle" class="search-toggle device-search">
                       <i class="fa fa-search"></i>
                     </a>
                     <div class="search-box iq-search-bar d-search">
                       <form action="#" class="searchbox">
                         <div class="form-group position-relative">
-                          <input type="text" class="text search-input font-size-12"
-                            placeholder="type here to search..." />
+                          <input type="text" id="searchInput" class="text search-input font-size-12" placeholder="type here to search..." />
                           <i class="search-link fa fa-search"></i>
                         </div>
                       </form>
                     </div>
                   </li>
+                  <div id="searchResults"></div>
                   <li class="nav-item nav-icon">
                     <a href="#" class="search-toggle" data-toggle="search-toggle">
                       <i class="fa fa-bell"></i>
@@ -431,6 +431,7 @@
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/Series.js"></script>
   <script src="js/Main.js"></script>
+  <script src="js/Search.js"></script>
 
 </body>
 </html>

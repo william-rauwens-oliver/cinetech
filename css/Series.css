@@ -965,6 +965,7 @@ a.text-primary:focus, a.text-primary:hover{
     transition: all 0.5s ease;
     color: #e50914;
 }
+
 /* responsiveness *********************** */
 
 @media (min-width : 1499px){
