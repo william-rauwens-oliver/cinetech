@@ -42,7 +42,9 @@ function renderSeries(series) {
                         Play Now
                     </span>
                     <button class="btn btn-link favorite-btn" data-id="${series.id}">
-                        <i class="fa fa-heart"></i> Add to Favorites
+                        <div style="background-color: red; border-radius: 50%; padding: 6px;">
+                            <i class="fa fa-heart" style="color: white;"></i>
+                        </div>
                     </button>
                 </div>
             </div>
