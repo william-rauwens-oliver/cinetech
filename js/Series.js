@@ -1,31 +1,23 @@
-// Déclaration des constantes
 const maConst = '8c4b867188ee47a1d4e40854b27391ec';
-const apiUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=' + maConst;
+const apiUrl = 'https://api.themoviedb.org/3/discover/tv?api_key=' + maConst;
 const filmsContainer = document.getElementById('filmsContainer');
 
-// Fonction utilitaire pour formater la durée du film en heures et minutes
 function formatRuntime(runtime) {
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
     return `${hours}h ${minutes}min`;
 }
-
-// Fonction pour charger les détails du film
 function loadFilmDetails(filmId) {
-    // Utiliser l'ID du film pour récupérer les détails du film depuis l'API
-    fetch(`https://api.themoviedb.org/3/movie/${filmId}?api_key=${maConst}`)
+    fetch(`https://api.themoviedb.org/3/discover/tv/${filmId}?api_key=${maConst}`)
         .then(response => response.json())
         .then(data => {
-            // Afficher les détails du film sur la page
-            // Vous pouvez mettre à jour le contenu de la page avec les détails du film ici
-            console.log(data); // Exemple de traitement des données du film
+           
+            console.log(data);
         })
         .catch(error => {
             console.error('Erreur lors de la récupération des données du film:', error);
         });
 }
-
-// Fonction pour créer et afficher un élément représentant un film
 function renderFilm(film) {
     const filmItem = document.createElement('div');
     filmItem.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'mb-4');
@@ -58,22 +50,17 @@ function renderFilm(film) {
         </div>
     `;
 
-    // Ajouter un gestionnaire d'événements sur le bouton "Play Now"
     const playNowButton = filmItem.querySelector('.play-now');
     playNowButton.addEventListener('click', () => {
-        // Redirection vers la page principale avec l'ID du film en tant que paramètre de requête
         window.location.href = `Details.html?id=${film.id}`;
     });
 
-    // Ajouter l'élément du film au conteneur
     filmsContainer.appendChild(filmItem);
 }
 
-// Charger les données des films depuis l'API
 fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
-        // Pour chaque film, créer et afficher un élément représentant le film
         data.results.forEach(film => {
             renderFilm(film);
         });
