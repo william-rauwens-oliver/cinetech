@@ -39,7 +39,7 @@ fetch(requests.fetchNetflixOrignals)
   var banner__rate = document.getElementById("banner__rate");
   banner.style.backgroundImage = "url(" + img_url + setMovie.backdrop_path + ")";
   banner__desc.innerText = truncate(setMovie.overview, 150);
-  banner_title.innerText = setMovie.name || setMovie.title; // Adaptation pour TV ou films
+  banner_title.innerText = setMovie.name || setMovie.title; 
   banner__rate.innerHTML = getStars(setMovie.vote_average);
 })
 
