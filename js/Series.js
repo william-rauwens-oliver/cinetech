@@ -53,11 +53,12 @@ function renderSeries(series) {
                     </button>
                 </div>
                 <div class="comment-section" style="display: none;">
+                    <h6 class="comment-title">Comments</h6>
                     <form class="comment-form">
-                        <textarea placeholder="Enter your comment" required></textarea>
-                        <button type="submit">Submit</button>
+                        <textarea class="form-control" rows="3" placeholder="Enter your comment"></textarea>
+                        <button type="submit" class="btn btn-primary mt-2">Submit</button>
                     </form>
-                    <ul class="comment-list"></ul>
+                    <ul class="comment-list mt-3"></ul>
                 </div>
             </div>
             <div class="block-social-info">
@@ -110,6 +111,7 @@ function renderSeries(series) {
         if (commentText !== '') {
             // Ajouter le commentaire à la liste des commentaires affichée
             const commentItem = document.createElement('li');
+            commentItem.classList.add('comment-item');
             commentItem.textContent = commentText;
             commentList.appendChild(commentItem);
 
