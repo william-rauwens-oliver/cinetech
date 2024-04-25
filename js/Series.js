@@ -1,5 +1,5 @@
 const maConst = '8c4b867188ee47a1d4e40854b27391ec';
-const apiUrl = 'https://api.themoviedb.org/3/discover/tv?api_key=' + maConst;
+const apiUrl = 'https://api.themoviedb.org/3/discover/tv?api_key=' + maConst + "&language=fr-FR";;
 const seriesContainer = document.getElementById('seriesContainer');
 
 function loadSeriesDetails(seriesId) {
