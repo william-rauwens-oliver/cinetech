@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+   font-family: Arial, Helvetica, sans-serif;
+    background-color: #111;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 7px;
+    background-color: #111;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 10px;
+  }
+  
+  .nav {
+    position: fixed;
+    top: 0;
+    padding: 20px 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+  }
+  
+  .nav.active {
+    background-color: #111;
+  }
+  
+  .nav__left {
+    margin-left: 10px;
+  }
+  
+  .nav_logo {
+    width: 120px;
+  }
+  
+  .nav__right {
+    right: 20px;
+    display: flex;
+    margin-right: 10px;
+  }
+  
+  .nav__middle {
+    display: flex;
+    gap: 10px; 
+    opacity: 0;
+  
+  }
+  .nav__middle>a{
+    text-decoration: none;
+    color: rgb(167, 167, 167);
+  }
+  .nav__middle.visible{
+    opacity: 1;
+  }
+  
+  .nav_avatar {
+    width: 35px;
+  }
+  
+  #banner {
+    color: white;
+    object-fit: contain;
+    height: 844px;
+    background-position: center center;
+    background-size: cover;
+  }
+  
+  #banner__contents {
+    margin-left: 70px;
+    padding-top: 540px;
+    height: 190px;
+  }
+  
+  #banner__title {
+    font-size: 3rem;
+    font-weight: 800;
+    padding-bottom: 0.3rem;
+  }
+  
+  #banner__description {
+    width: 45rem;
+    line-height: 1.5;
+    padding-top: 1rem;
+    font-size: 0.9rem;
+    max-width: 360px;
+    height: 80px;
+    color: rgb(243, 236, 236);
+    font-weight: bold;
+    
+  }
+  
+  #banner__button {
+    cursor: pointer;
+    color: white;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 0.2vw;
+    padding-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    padding-top: 0.5rem;
+    background-color: rgba(51, 51, 51, 0.5);
+    padding-bottom: 0.5rem;
+  }
+  
+  #banner__button:hover {
+    color: black;
+    background-color: #e6e6e6;
+    transition: all 0.3s;
+  }
+  
+  #banner__fadeBottom {
+    height: 7.4rem;
+  }
+  
+  .row {
+    margin-left: 20px;
+    color: white;
+  }
+  
+  .row__poster {
+    object-fit: contain;
+    margin-right: 10px;
+    transition: transform 500ms;
+    cursor: pointer;
+  }
+  
+  .row__posters::-webkit-scrollbar-thumb {
+    display: block;
+    background-color: rgb(59, 59, 59);
+  }
+  
+  .row__posters::-webkit-scrollbar {
+    height: 0.5em;
+  }
+  
+  .row__posters {
+    display: flex;
+    overflow-x: scroll;
+    padding: 20px;
+    gap: 12px;
+    position: relative;
+  }
+  
+  .row__poster:hover {
+    transform: scale(1.08);
+  }
+  
+  .row__posterLarge,
+  .row__posterLarge1,
+  .row__posterLarge2 {
+    object-fit: contain;
+    max-height: 300px;
+    transition: transform 500ms;
+  }
+  
+  .row__posterLarge:hover,
+  .row__posterLarge1:hover,
+  .row__posterLarge2:hover {
+    transform: scale(1.09);
+    opacity: 1;
+  }
+  
+  .scroll-right {
+    right: 0;
+  }
+  
+  .rating-stars {
+    color: gold;        
+    font-size: 24px;    
+    font-family: Arial; 
+  }
+  
+  
+  @media only screen and (max-width: 1200px) {
+    .row__posters {
+      overflow-x: scroll;
+      scrollbar-width: none;
+    }
+  }
+  
+  .rating-stars {
+    color: gold;          
+    font-size: 24px;     
+    font-family: Arial;  
+  }
+  
+  @media (max-width: 768px) {
+    .rating-stars {
+      font-size: 20px;    
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .rating-stars {
+      font-size: 16px;    
+    }
+  }
