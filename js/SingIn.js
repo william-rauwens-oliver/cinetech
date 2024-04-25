@@ -69,7 +69,7 @@ const signIn = (event) => {
 
             if (formData.email === inputEmail.value.trim() && formData.password === inputPassword.value.trim()) {
 
-                window.location.href = "Accueil.html";
+                window.location.href = "Acceuil.html";
             } else {
                 errorMessageContainer.innerHTML = "<span style='color: #e87c03;'>Aucun compte n'existe avec cette adresse e-mail ou le mot de passe est incorrect.</span>";
             }

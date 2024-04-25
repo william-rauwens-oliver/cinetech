@@ -8,9 +8,9 @@
   <title>Cinetech</title>
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="css/Acceuil.css" />
-  <link rel="stylesheet" href="css/Series.css">
-  <script src="js/Acceuil.js"></script>
+  <link rel="stylesheet" href="css/Series.css" />
+  <link rel="stylesheet" href="css/Acceuil.css">
+
 </head>
 
 <body>
@@ -303,7 +303,7 @@
     </div>
   </header>
   
-  <header id="banner">
+  <main id="banner">
     <div id="banner__contents">
       <h1 id="banner__title"></h1>
       <div id="banner__buttons">
@@ -314,7 +314,7 @@
       <p id="banner__rate"></p>
     </div>
     <div id="banner__fadeBottom"></div>
-  </header>
+  </main>
 
   <div id="headrow">
     <div class="row">
@@ -389,20 +389,12 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/Series.js"></script>
+  <script src="js/Main.js"></script>
   <script src="js/Search.js"></script>
+  <script src="js/Acceuil.js"></script>
 
-  <script>
-    window.addEventListener("scroll", function () {
-      var nav = document.querySelector(".nav");
-      nav.classList.toggle("active", window.scrollY > 0);
-
-      var text = document.querySelector(".nav__middle");
-      text.classList.toggle("visible", window.scrollY > 0);
-    }) 
-  </script>
 </body>
 
 </html>
