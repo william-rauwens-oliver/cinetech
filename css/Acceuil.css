@@ -200,6 +200,13 @@
     .nav__right {
       margin-right: auto; /* Déplacer les éléments vers la gauche */
     }
+    
+    #banner__contents {
+      margin-left: 0px;
+      padding-top: 540px;
+      height: 190px;
+      text-align: center;
+    }
   }
   
   @media (max-width: 480px) {
