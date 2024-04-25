@@ -202,17 +202,21 @@ body{
     }
 
     .img-logo {
-        margin-left: 22px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
     }
 
     .login{
         padding: 0 10px 0 10px;
         width: 100%;
+        text-align: center; /* Centre le texte à l'intérieur du bloc */
     }
 
     .login-div{
         width: 90%;
         margin: 0 auto;
+        margin-left: 5px; /* Décalage vers la gauche */
     }
 
     .bottom {
@@ -233,4 +237,3 @@ body{
         width: 50%;
     }
 }
-
