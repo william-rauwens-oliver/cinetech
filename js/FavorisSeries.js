@@ -27,10 +27,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 <img src="https://image.tmdb.org/t/p/w500/${series.poster_path}" alt="${series.name}" class="img-fluid">
                 <h3 class="series-title">${series.name}</h3>
                 <p class="series-description">${series.overview}</p>
+                <h4>Commentaires:</h4>
+                <ul class="comment-list"></ul> <!-- Conteneur pour les commentaires -->
                 <button class="btn btn-danger delete-button" data-id="${series.id}">Supprimer</button>
               </div>
             `;
             seriesContainer.appendChild(seriesItem);
+            
+            // Récupération et affichage des commentaires
+            const commentList = seriesItem.querySelector('.comment-list');
+            const commentsKey = `comments_${series.id}`;
+            const comments = JSON.parse(localStorage.getItem(commentsKey)) || [];
+            comments.forEach(commentText => {
+              const commentItem = document.createElement('li');
+              commentItem.textContent = commentText;
+              commentList.appendChild(commentItem);
+            });
           })
           .catch(error => console.error('Erreur lors de la récupération des détails de la série TV:', error));
       });
