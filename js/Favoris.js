@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     filmsContainer.innerHTML = "<p>Aucun film en favori pour le moment.</p>";
   } else {
     favorites.forEach(movieId => {
-      fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=8c4b867188ee47a1d4e40854b27391ec + "&language=fr-FR"`)
+      fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=8c4b867188ee47a1d4e40854b27391ec&language=fr-FR`)
         .then(response => response.json())
         .then(movie => {
           filmsContainer.innerHTML += `
