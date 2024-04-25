@@ -1,5 +1,5 @@
 const maConst = '8c4b867188ee47a1d4e40854b27391ec';
-const apiUrl = 'https://api.themoviedb.org/3/discover/tv?api_key=' + maConst + "&language=fr-FR";;
+const apiUrl = 'https://api.themoviedb.org/3/discover/tv?api_key=' + maConst + "&language=fr-FR";
 const seriesContainer = document.getElementById('seriesContainer');
 
 function loadSeriesDetails(seriesId) {
@@ -40,7 +40,7 @@ function renderSeries(series) {
                             <i class="fa fa-heart" style="color: white;"></i>
                         </div>
                     </button>
-                    <button class="btn btn-link comment-btn">
+                    <button class="btn btn-link comment-btn" data-series-id="${series.id}">
                         <div style="background-color: blue; border-radius: 50%; padding: 6px;">
                             <i class="fa fa-comment" style="color: white;"></i>
                         </div>
@@ -52,7 +52,7 @@ function renderSeries(series) {
                         <textarea class="form-control" rows="3" placeholder="Enter your comment"></textarea>
                         <button type="submit" class="btn btn-primary mt-2">Submit</button>
                     </form>
-                    <ul class="comment-list mt-3"></ul>
+                    <ul class="comment-list mt-3" data-series-id="${series.id}"></ul>
                 </div>
             </div>
             <div class="block-social-info">
@@ -70,7 +70,6 @@ function renderSeries(series) {
 
     const favoriteButton = seriesItem.querySelector('.favorite-btn');
     favoriteButton.addEventListener('click', () => {
-
         console.log('Ajouter la série avec ID ' + series.id + ' aux favoris.');
         addToFavorites(series.id);
     });
@@ -117,6 +116,21 @@ function addToFavorites(seriesId) {
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     favorites.push(seriesId);
     localStorage.setItem('favorites', JSON.stringify(favorites));
+}
+
+function loadComments(seriesId) {
+    const commentsKey = `comments_${seriesId}`;
+    const comments = JSON.parse(localStorage.getItem(commentsKey)) || [];
+
+    const commentList = document.querySelector(`.comment-list[data-series-id="${seriesId}"]`);
+    commentList.innerHTML = '';
+
+    comments.forEach(commentText => {
+        const commentItem = document.createElement('li');
+        commentItem.classList.add('comment-item');
+        commentItem.textContent = commentText;
+        commentList.appendChild(commentItem);
+    });
 }
 
 fetch(apiUrl)
