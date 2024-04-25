@@ -549,9 +549,11 @@ header#main-header.menu-sticky{
     z-index: 1;
 }
 
-/* Ajout de media queries pour rendre le design responsive */
+.main-content{
+    padding-top: 70px;
+}
 
-/* Pour les écrans de taille moyenne et supérieure */
+
 @media screen and (min-width: 768px) {
     .container-fluid {
         padding: 0 50px; /* Réduire le padding pour les conteneurs fluides */
@@ -669,24 +671,26 @@ footer .footer-top .info-share li a::before{
 }
 
 
-/* Pour les écrans inférieurs à 900px (téléphones) */
 @media screen and (max-width: 899px) {
     body {
-        margin: 0; /* Enlever la marge de la page */
+        margin: 0;
     }
 
     .container-fluid {
-        padding: 0 20px; /* Ajuster le padding pour les conteneurs fluides sur les téléphones */
+        padding: 0 20px;
     }
 
     header#main-header {
-        text-align: center; /* Centrer le contenu de l'en-tête */
+        text-align: center;
     }
 
     header .navbar {
-        display: inline-block; /* Afficher la barre de navigation en tant que bloc en ligne */
-        margin-left: 120px; /* Déplacer la barre de navigation vers la droite */
+        display: inline-block;
+        margin-left: 120px;
     }
 
-    /* Ajouter d'autres ajustements de style selon vos besoins */
+    header .navbar-brand {
+        margin-left: -160px;
+    }
+
 }
