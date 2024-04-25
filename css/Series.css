@@ -556,24 +556,22 @@ header#main-header.menu-sticky{
 
 @media screen and (min-width: 768px) {
     .container-fluid {
-        padding: 0 50px; /* Réduire le padding pour les conteneurs fluides */
+        padding: 0 50px;
     }
     header .navbar-light .navbar-brand img.logo {
-        width: 180px; /* Augmenter la taille du logo */
+        width: 180px;
     }
 }
 
-/* Pour les écrans de grande taille */
 @media screen and (min-width: 992px) {
     .container-fluid {
-        padding: 0 70px; /* Augmenter le padding pour les conteneurs fluides */
+        padding: 0 70px;
     }
 }
 
-/* Pour les écrans extra larges */
 @media screen and (min-width: 1200px) {
     .container-fluid {
-        padding: 0 100px; /* Augmenter encore le padding pour les conteneurs fluides */
+        padding: 0 100px;
     }
 }
 

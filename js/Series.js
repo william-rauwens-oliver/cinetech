@@ -33,7 +33,7 @@ function renderSeries(series) {
                 <div class="hover-buttons">
                     <span class="btn btn-hover iq-button play-now">
                         <i class="fa fa-play mr-1"></i>
-                        Play Now
+                        Voir Le détail
                     </span>
                     <button class="btn btn-link favorite-btn" data-id="${series.id}">
                         <div style="background-color: red; border-radius: 50%; padding: 6px;">
