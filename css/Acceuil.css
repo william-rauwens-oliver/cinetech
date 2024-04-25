@@ -190,15 +190,15 @@
     }
   
     .nav {
-      justify-content: space-between; /* Pour que les éléments soient répartis sur la barre de navigation */
+      justify-content: space-between;
     }
   
     .nav__left {
-      margin-left: auto; /* Déplacer les éléments vers la droite */
+      margin-left: auto;
     }
   
     .nav__right {
-      margin-right: auto; /* Déplacer les éléments vers la gauche */
+      margin-right: auto;
     }
     
     #banner__contents {
@@ -215,15 +215,15 @@
     }
   
     .nav {
-      justify-content: space-between; /* Pour que les éléments soient répartis sur la barre de navigation */
+      justify-content: space-between;
     }
   
     .nav__left {
-      margin-left: auto; /* Déplacer les éléments vers la droite */
+      margin-left: auto;
     }
   
     .nav__right {
-      margin-right: auto; /* Déplacer les éléments vers la gauche */
+      margin-right: auto;
     }
   }
   
