@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       seriesContainer.innerHTML = "";
       favorites.forEach(seriesId => {
-        fetch(`https://api.themoviedb.org/3/tv/${seriesId}?api_key=8c4b867188ee47a1d4e40854b27391ec`)
+        fetch(`https://api.themoviedb.org/3/tv/${seriesId}?api_key=8c4b867188ee47a1d4e40854b27391ec&language=fr-FR`)
           .then(response => response.json())
           .then(series => {
             const seriesItem = document.createElement('div');
