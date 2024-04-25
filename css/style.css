@@ -210,13 +210,13 @@ body{
     .login{
         padding: 0 10px 0 10px;
         width: 100%;
-        text-align: center; /* Centre le texte à l'intérieur du bloc */
+        text-align: center;
     }
 
     .login-div{
         width: 90%;
         margin: 0 auto;
-        margin-left: 5px; /* Décalage vers la gauche */
+        margin-left: 5px;
     }
 
     .bottom {
