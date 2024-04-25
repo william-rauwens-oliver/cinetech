@@ -667,3 +667,26 @@ footer .footer-top .info-share li a::before{
 .textwidget .footer-link-title{
     width: 100px;
 }
+
+
+/* Pour les écrans inférieurs à 900px (téléphones) */
+@media screen and (max-width: 899px) {
+    body {
+        margin: 0; /* Enlever la marge de la page */
+    }
+
+    .container-fluid {
+        padding: 0 20px; /* Ajuster le padding pour les conteneurs fluides sur les téléphones */
+    }
+
+    header#main-header {
+        text-align: center; /* Centrer le contenu de l'en-tête */
+    }
+
+    header .navbar {
+        display: inline-block; /* Afficher la barre de navigation en tant que bloc en ligne */
+        margin-left: 120px; /* Déplacer la barre de navigation vers la droite */
+    }
+
+    /* Ajouter d'autres ajustements de style selon vos besoins */
+}
