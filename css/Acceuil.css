@@ -184,27 +184,39 @@
     font-family: Arial; 
   }
   
-  @media only screen and (max-width: 1200px) {
-    .row__posters {
-      overflow-x: scroll;
-      scrollbar-width: none;
-    }
-  }
-  
-  .rating-stars {
-    color: gold;          
-    font-size: 24px;     
-    font-family: Arial;  
-  }
-  
   @media (max-width: 768px) {
     .rating-stars {
-      font-size: 20px;    
+      font-size: 20px;
+    }
+  
+    .nav {
+      justify-content: space-between; /* Pour que les éléments soient répartis sur la barre de navigation */
+    }
+  
+    .nav__left {
+      margin-left: auto; /* Déplacer les éléments vers la droite */
+    }
+  
+    .nav__right {
+      margin-right: auto; /* Déplacer les éléments vers la gauche */
     }
   }
   
   @media (max-width: 480px) {
     .rating-stars {
-      font-size: 16px;    
+      font-size: 16px;
+    }
+  
+    .nav {
+      justify-content: space-between; /* Pour que les éléments soient répartis sur la barre de navigation */
+    }
+  
+    .nav__left {
+      margin-left: auto; /* Déplacer les éléments vers la droite */
+    }
+  
+    .nav__right {
+      margin-right: auto; /* Déplacer les éléments vers la gauche */
     }
   }
+  
