@@ -46,6 +46,18 @@ function renderSeries(series) {
                             <i class="fa fa-heart" style="color: white;"></i>
                         </div>
                     </button>
+                    <button class="btn btn-link comment-btn">
+                        <div style="background-color: blue; border-radius: 50%; padding: 6px;">
+                            <i class="fa fa-comment" style="color: white;"></i>
+                        </div>
+                    </button>
+                </div>
+                <div class="comment-section" style="display: none;">
+                    <form class="comment-form">
+                        <textarea placeholder="Enter your comment" required></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                    <ul class="comment-list"></ul>
                 </div>
             </div>
             <div class="block-social-info">
@@ -70,6 +82,46 @@ function renderSeries(series) {
         console.log('Ajouter la série avec ID ' + series.id + ' aux favoris.');
         // Ajouter la série aux favoris localement
         addToFavorites(series.id);
+    });
+
+    // Ajouter un gestionnaire d'événements sur le bouton de commentaire
+    const commentButton = seriesItem.querySelector('.comment-btn');
+    const commentSection = seriesItem.querySelector('.comment-section');
+    const commentForm = seriesItem.querySelector('.comment-form');
+    const commentList = seriesItem.querySelector('.comment-list');
+
+    commentButton.addEventListener('click', () => {
+        // Afficher ou masquer la section de commentaire lors du clic sur le bouton de commentaire
+        if (commentSection.style.display === 'none') {
+            commentSection.style.display = 'block';
+            loadComments(series.id); // Charger les commentaires précédemment stockés
+        } else {
+            commentSection.style.display = 'none';
+        }
+    });
+
+    // Ajouter un gestionnaire d'événements pour soumettre un commentaire
+    commentForm.addEventListener('submit', event => {
+        event.preventDefault(); // Empêcher le formulaire de soumettre normalement la page
+
+        const commentInput = commentForm.querySelector('textarea');
+        const commentText = commentInput.value.trim();
+
+        if (commentText !== '') {
+            // Ajouter le commentaire à la liste des commentaires affichée
+            const commentItem = document.createElement('li');
+            commentItem.textContent = commentText;
+            commentList.appendChild(commentItem);
+
+            // Ajouter le commentaire au stockage local
+            const commentsKey = `comments_${series.id}`; // Clé unique pour les commentaires de chaque série
+            const comments = JSON.parse(localStorage.getItem(commentsKey)) || [];
+            comments.push(commentText);
+            localStorage.setItem(commentsKey, JSON.stringify(comments));
+
+            // Effacer le champ de texte du commentaire après l'avoir ajouté
+            commentInput.value = '';
+        }
     });
 
     // Ajouter l'élément de la série au conteneur
