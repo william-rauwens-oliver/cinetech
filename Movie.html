@@ -9,8 +9,6 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="css/Series.css" />
-  <link rel="stylesheet" href="css/Acceuil.css">
-
 </head>
 
 <body>
@@ -301,26 +299,68 @@
       </div>
     </div>
   </header>
-  
-  <main id="banner">
-    <div id="banner__contents">
-      <h1 id="banner__title"></h1>
-      <div id="banner__buttons">
-        <button id="banner__button">Voir</button>
-        <button id="banner__button">Details</button>
-      </div>
-      <p id="banner__description"></p>
-      <p id="banner__rate"></p>
-    </div>
-    <div id="banner__fadeBottom"></div>
-  </main>
 
-  <div id="headrow">
-    <div class="row">
-      <h2 class="row__title"></h2>
-      <div class="row__posters">
+  <div class="main-content">
+
+    <section id="iq-favorites">
+      <div class="container-fluid">
+        <div class="row" id="moviesContainer">
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section id="parallex" class="parallax-window">
+      <div class="container-fluid h-100">
+        <div class="row align-items-center justify-content-center h-100 parallaxt-details">
+          <div class="col-lg-4 r-mb-23">
+            <div class="text-left">
+              <a href="javascript:void(0)">
+                <h1 class="parallax-heading">Avatar</h1>
+              </a>
+              <div class="parallax-ratting d-flex align-items-center mt-3 mb-3">
+                <ul
+                  class="ratting-start p-o m-0 list-inline text-primary d-flex align-items-center justify-content-left">
+                  <li>
+                    <a href="#" class="text-primary"><i class="fa fa-star"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-primary"><i class="pl-2 fa fa-star"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-primary"><i class="pl-2 fa fa-star"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-primary"><i class="pl-2 fa fa-star"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-primary"><i class="pl-2 fa fa-star-half-o"></i></a>
+                  </li>
+                </ul>
+                <span class="text-white ml-3">7.8(Imbd)</span>
+              </div>
+              <div class="movie-time d-flex align-items-center mb-3">
+                <div class="badge badge-secondary p-1 mr-2">9+</div>
+                <span class="text-white">2h 42min</span>
+              </div>
+              <p>
+                A paraplegic Marine dispatched to the moon Pandora on a unique
+                mission becomes torn between following his orders and
+                protecting the world he feels is his home.
+              </p>
+              <div class="parallax-buttons">
+                <a href="#" class="btn btn-hover">Play Now</a>
+                <a href="#" class="btn btn-link">More Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="parallax-img">
+              <a href="#"><img src="images/parallax/avatar.jpg" alt="" class="img-fluid w-100" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <footer class="iq-bg-dark">
@@ -389,11 +429,8 @@
   </footer>
 
   <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/Series.js"></script>
+  <script src="js/Movie.js"></script>
   <script src="js/Main.js"></script>
-  <script src="js/SearchMovie.js"></script>
-  <script src="js/Acceuil.js"></script>
 
 </body>
-
 </html>

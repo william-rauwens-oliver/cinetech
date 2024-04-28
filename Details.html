@@ -29,8 +29,8 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <div class="menu-main-menu-container">
                       <ul id="top-menu" class="navbar-nav ml-auto">
-                        <li class="menu-item"><a href="/Acceuil.html">Acceuil</a></li>
-                        <li class="menu-item"><a href="/Film.html">Films</a></li>
+                        <li class="menu-item"><a href="/Movie.html">Acceuil</a></li>
+                        <li class="menu-item"><a href="/Movie.html">Films</a></li>
                         <li class="menu-item"><a href="/Series.html">Série</a></li>
                         <li class="menu-item"><a href="/Favoris.html">Voir mes favoris</a></li>
                         <li class="menu-item">
@@ -400,42 +400,42 @@
       </div>
     </footer>
 
-      <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const seriesId = urlParams.get('id');
-        
-        fetch(`https://api.themoviedb.org/3/tv/${seriesId}?api_key=8c4b867188ee47a1d4e40854b27391ec` + "&language=fr-FR")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('seriesTitle').innerText = data.name;
-                document.getElementById('seriesDescription').innerText = data.overview;
-    
-                const posterPath = data.poster_path;
-                if (posterPath) {
-                    const posterUrl = `https://image.tmdb.org/t/p/w500/${posterPath}`;
-                    const posterImg = document.createElement('img');
-                    posterImg.src = posterUrl;
-                    posterImg.alt = data.name + ' Poster';
-                    document.getElementById('seriesPoster').appendChild(posterImg);
-                }
-    
-                const creator = data.created_by.map(creator => creator.name).join(', ');
-                document.getElementById('creator').innerText = creator;
-    
-                const genres = data.genres.map(genre => genre.name).join(', ');
-                document.getElementById('genres').innerText = genres;
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const seriesId = urlParams.get('id');
+      
+      fetch(`https://api.themoviedb.org/3/tv/${seriesId}?api_key=8c4b867188ee47a1d4e40854b27391ec` + "&language=fr-FR")
+          .then(response => response.json())
+          .then(data => {
+              document.getElementById('seriesTitle').innerText = data.name;
+              document.getElementById('seriesDescription').innerText = data.overview;
   
-                document.getElementById('originCountry').innerText = data.origin_country.join(', ');
-    
-                document.getElementById('summary').innerText = data.overview;
-    
-                const actors = data.credits.cast.slice(0, 5).map(actor => actor.name).join(', ');
-                document.getElementById('actors').innerText = actors;
-            })
-            .catch(error => {
-                console.error('Erreur lors de la récupération des données de la série:', error);
-            });
-    </script>    
+              const posterPath = data.poster_path;
+              if (posterPath) {
+                  const posterUrl = `https://image.tmdb.org/t/p/w500/${posterPath}`;
+                  const posterImg = document.createElement('img');
+                  posterImg.src = posterUrl;
+                  posterImg.alt = data.name + ' Poster';
+                  document.getElementById('seriesPoster').appendChild(posterImg);
+              }
+  
+              const creator = data.created_by.map(creator => creator.name).join(', ');
+              document.getElementById('creator').innerText = creator;
+  
+              const genres = data.genres.map(genre => genre.name).join(', ');
+              document.getElementById('genres').innerText = genres;
+
+              document.getElementById('originCountry').innerText = data.origin_country.join(', ');
+  
+              document.getElementById('summary').innerText = data.overview;
+  
+              const actors = data.credits.cast.slice(0, 5).map(actor => actor.name).join(', ');
+              document.getElementById('actors').innerText = actors;
+          })
+          .catch(error => {
+              console.error('Erreur lors de la récupération des données de la série:', error);
+          });
+  </script>     
     
 </body>
 </html>
